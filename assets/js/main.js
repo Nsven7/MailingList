@@ -10,21 +10,39 @@ document.getElementById('clientForm').addEventListener('submit', function (e) {
     const seniorState = senior.checked ? 1 : 0;
     const disability = document.getElementById('disability');
     const disabilityState = disability.checked ? 1 : 0;
-    const service = document.getElementById('services').value
+    const service = document.getElementById('services').value;
     const newClient = manager.addClient(clientName, seniorState, disabilityState, service);
 
     renderClients();
 });
 
+// Event listeners for sorting buttons
+document.getElementById('sortByServiceBtn').addEventListener('click', () => {
+    sortClientsByService();
+    renderClients();
+});
+
+document.getElementById('sortByPriorityBtn').addEventListener('click', () => {
+    sortClientsByPriority();
+    renderClients();
+});
+
+// Sort clients by requested service (alphabetically)
+const sortClientsByService = () => {
+    manager.clients.sort((a, b) => a.service.localeCompare(b.service));
+};
+
+// Sort clients by priority (isPriority property)
+const sortClientsByPriority = () => {
+    manager.clients.sort((a, b) => b.isPriority - a.isPriority);
+};
+
 const renderClients = () => {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = ''; // Clear existing rows
 
-    // Sort clients with isPriority = true at the top
-    const sortedClients = [...manager.clients].sort((a, b) => b.isPriority - a.isPriority);
-
-    // Loop through sorted clients and create rows
-    sortedClients.forEach(client => {
+    // Loop through clients and create rows
+    manager.clients.forEach(client => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${client.id}</td>
