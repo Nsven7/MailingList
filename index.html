@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interrogation 1</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid mt-4">
+        <!-- Form Section -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="clientForm" class="card p-4 shadow-sm">
+                    <div class="mb-3">
+                        <label for="first-name" class="form-label">Enter your first name:</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" min="4" max="15"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="requested-service" class="form-label">Select the service:</label>
+                        <select name="services" id="services">
+                            <option value="Shipment">Shipment</option>
+                            <option value="Parcel Pickup">Parcel pickup</option>
+                            <option value="Bill Payment">Bill payment</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" id="senior" name="senior">
+                        <label for="senior">I am 50 years old or over</label><br>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" id="disability" name="disability">
+                        <label for="disability">I have a disability</label><br>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!-- nom,servicedemandé,tempsestimé,priorité -->
+        <!-- Table Section -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <table id="tasksArray" class="table table-striped table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Client</th>
+                            <th scope="col">Requested service</th>
+                            <th scope="col">Senior</th>
+                            <th scope="col">Disability</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamic rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+
+</html>

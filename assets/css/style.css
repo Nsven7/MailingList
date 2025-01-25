@@ -1,0 +1,7 @@
+.icon {
+    cursor: pointer;
+}
+
+.isCompleted {
+     text-decoration: line-through;
+}
